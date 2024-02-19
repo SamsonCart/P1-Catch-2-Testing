@@ -78,6 +78,9 @@ public:
     Node* SearchDeletedNode(Node* root, string ufid); //check to see if the node was deleted from the tree
     void RemoveInorder(Node* root, int& targetCount);//Removes a node at a given count (InorderTraversal)
 
+    vector<int> TraverseInOrderHelper();//passes the tree root and vector of nodes for Catch Testing
+    int HeightHelper(); //passes the tree root in for Catch Testing
+
     bool ValidateCommand(string& command); //Ensure initial command is valid
     void ReviewCommands(vector<Data> dataArray, int numOfCommands); //Review all commands input by the user, determine output in order
     void printVector(vector<Node*>& nodesToBePrinted); //print contents of traversal vector in designated order
