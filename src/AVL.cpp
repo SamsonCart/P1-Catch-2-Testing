@@ -155,6 +155,15 @@ void AVLTree::TraverseInOrder(Node* root, vector<Node*>& nodes)
         TraverseInOrder(root->getRightNode(), nodes);
     }
 };
+vector<int> AVLTree::TraverseInOrderHelper()
+{
+    TraverseInOrder(root, nodesToBePrinted);
+    vector<int> UFIDs;
+    for (unsigned int i = 0; i < nodesToBePrinted.size(); i++) {
+        UFIDs.push_back(stoi(nodesToBePrinted[i]->getUFID()));
+    }
+    return UFIDs;
+}
 void AVLTree::TraversePreorder(Node* root, vector<Node*>& nodes)
 {
     //Traverse Preorder: Node, Left, Right. Assign values to referenced vector of names
@@ -224,6 +233,10 @@ int AVLTree::Height(Node* root)
     if(root == nullptr)
         return 0;
     return 1 + max(Height(root->getLeftNode()), Height(root->getRightNode()));
+}
+int AVLTree::HeightHelper()
+{
+    return Height(root);
 }
 int AVLTree::UpdateBalanceFactor(Node* node)
 {
