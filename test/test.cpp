@@ -48,3 +48,94 @@ TEST_CASE("Example BST Insert", "[flag]"){
 		REQUIRE(actualOutput == expectedOutput);
 	*/
 }
+
+
+TEST_CASE("BST Insert", "[Left-Left Case]"){
+
+    AVLTree tree;   // Create a Tree object
+    tree.Insert("NameC", "00000003");
+    tree.Insert("NameB", "00000002");
+    tree.Insert("NameA", "00000001");
+    std::vector<int> actualOutput = tree.TraverseInOrderHelper();
+    std::vector<int> expectedOutput = {1, 2, 3};
+    REQUIRE(expectedOutput.size() == actualOutput.size());
+    REQUIRE(actualOutput == expectedOutput);
+
+	REQUIRE(1 == 1);
+}
+
+TEST_CASE("BST Insert", "[Right-Right Case]"){
+
+    AVLTree tree;   // Create a Tree object
+    tree.Insert("NameA", "00000001");
+    tree.Insert("NameB", "00000002");
+    tree.Insert("NameC", "00000003");
+    std::vector<int> actualOutput = tree.TraverseInOrderHelper();
+    std::vector<int> expectedOutput = {1, 2, 3};
+    REQUIRE(expectedOutput.size() == actualOutput.size());
+    REQUIRE(actualOutput == expectedOutput);
+
+    REQUIRE(1 == 1);
+}
+
+TEST_CASE("BST Insert", "[Right-Left Case]"){
+
+    AVLTree tree;   // Create a Tree object
+    tree.Insert("NameA", "00000001");
+    tree.Insert("NameC", "00000003");
+    tree.Insert("NameB", "00000002");
+    std::vector<int> actualOutput = tree.TraverseInOrderHelper();
+    std::vector<int> expectedOutput = {1, 2, 3};
+    REQUIRE(expectedOutput.size() == actualOutput.size());
+    REQUIRE(actualOutput == expectedOutput);
+
+    REQUIRE(1 == 1);
+}
+
+TEST_CASE("BST Insert", "[Left-Right Case]"){
+
+    AVLTree tree;   // Create a Tree object
+    tree.Insert("NameC", "00000003");
+    tree.Insert("NameA", "00000001");
+    tree.Insert("NameB", "00000002");
+    std::vector<int> actualOutput = tree.TraverseInOrderHelper();
+    std::vector<int> expectedOutput = {1, 2, 3};
+    REQUIRE(expectedOutput.size() == actualOutput.size());
+    REQUIRE(actualOutput == expectedOutput);
+
+    REQUIRE(1 == 1);
+}
+
+TEST_CASE("Test Incorrect Commands", "[Bad Insertion, Search by Name/ID]"){
+
+    AVLTree tree;   // Create a Tree object
+    tree.Insert("NameC", "00000003");
+    tree.Insert("NameA", "00000001");
+    tree.Insert("NameB", "00000002");
+    tree.Insert("Name1", "00000004"); //Name with a number in it
+    tree.Insert("Name?", "00000004"); //Name with a special character in it
+    tree.Insert("NameD", "0000000009"); //UFID too long
+    tree.Insert("NameD", "000005"); //UFID too short
+    tree.Insert("NameD", "0000000R"); //UFID contains letters
+    tree.Insert("NameD", "0000000!"); //UFID contains special characters
+    tree.Insert("NameD", "00000001"); //UFID already present in tree
+    std::vector<int> actualOutput = tree.TraverseInOrderHelper();
+    std::vector<int> expectedOutput = {1, 2, 3};
+    REQUIRE(expectedOutput.size() == actualOutput.size());
+    REQUIRE(actualOutput == expectedOutput);
+
+    REQUIRE(1 == 1);
+}
+
+TEST_CASE("Test Balancing Factors", "[Check Level Count]"){
+
+    AVLTree tree;   // Create a Tree object
+    tree.Insert("NameC", "00000003");
+    tree.Insert("NameA", "00000001");
+    tree.DeleteNode("00000001");
+    int levelCount = tree.HeightHelper();
+    int expectedLevelCount = 1;
+    REQUIRE(expectedLevelCount == levelCount);
+
+    REQUIRE(1 == 1);
+}
